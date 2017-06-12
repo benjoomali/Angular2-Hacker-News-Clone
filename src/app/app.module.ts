@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { MomentModule } from 'angular2-moment';
+import { routing } from './app.routes';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -11,7 +11,7 @@ import { FooterComponent } from './footer/footer.component';
 import { ItemComponent } from './item/item.component';
 
 import { HackerNewsAPIService } from './hackernews-api.service';
-import { DomainPipe } from './domain.pipe';
+import { ItemCommentsComponent } from './item-comments/item-comments.component';
 
 @NgModule({
   declarations: [
@@ -20,13 +20,13 @@ import { DomainPipe } from './domain.pipe';
     StoriesComponent,
     FooterComponent,
     ItemComponent,
-    DomainPipe
+    ItemCommentsComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    MomentModule
+    routing
   ],
   providers: [HackerNewsAPIService],
   bootstrap: [AppComponent]
