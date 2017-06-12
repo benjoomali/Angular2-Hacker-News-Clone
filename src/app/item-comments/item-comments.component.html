@@ -1,3 +1,38 @@
-<p>
-  item-comments works!
-</p>
+<div class="main-content">
+  <div class="loading-section" *ngIf="!item">
+    <p>Loading...</p>
+  </div>
+  <div class="item" *ngIf="item">
+    <div class="mobile item-header">
+    </div>
+    <div class="laptop" [class.item-header]="item.comments_count > 0 || item.type === 'job'" [class.head-margin]="item.text">
+      <p>
+        <a href="{{item.url}}" class="title">
+          {{item.title}}
+        </a>
+        <span class="domain" *ngIf="item.domain">
+          ({{item.domain}})
+        </span>
+      </p>
+      <div class="subtext">
+        <span>
+          {{item.points}} points body
+            <a href="">{{item.user}}</a>
+        </span>
+        <span>
+          {{item.time_ago}}
+          </span> |
+          <a [routerLink]="['/item', item.id]">
+            <span *ngIf="item.comments_count !== 0">
+              {{item.comments_count}}
+              <span *ngIf="item.comments_count === 1">comment</span>
+              <span *ngIf="item.comments_count > 1">comments</span>
+            </span>
+            <span *ngIf="item.comments_count === 0">discuss</span>
+          </a>
+      </div>
+    </div>
+    <p class="subject" [innerHTML]="item.content"></p>
+    <app-comment-tree [commentTree]="item.comments"></app-comment-tree>
+  </div>
+</div>

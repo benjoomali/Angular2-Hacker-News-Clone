@@ -36,6 +36,7 @@ export class StoriesComponent implements OnInit {
                                 .subscribe(
                                   items => this.items = items,
                                   error => console.log('Error fetching' + this.storiesType + 'stories'),
+                                  //increment listStart based on page number
                                   () => this.listStart = ((this.pageNum - 1) * 30) + 1);
                                   window.scrollTo(0, 0);
     });
